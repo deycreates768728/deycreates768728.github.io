@@ -30,7 +30,6 @@
   .mono{font-family:'JetBrains Mono', monospace;}
   .wrap{max-width:1040px; margin:0 auto; padding:0 32px;}
 
-  /* subtle grid texture */
   .bg-grid{
     position:fixed; inset:0; z-index:-1;
     background-image:
@@ -40,7 +39,6 @@
     opacity:0.5;
   }
 
-  /* NAV */
   nav{
     position:sticky; top:0; z-index:50;
     background:rgba(247,245,239,0.9);
@@ -57,7 +55,6 @@
   .navlinks a:hover{color:var(--teal);}
   .navlinks .idx{color:var(--amber); font-family:'JetBrains Mono', monospace; font-size:0.75rem; margin-right:4px;}
 
-  /* HERO */
   header.hero{
     padding:96px 0 80px;
     position:relative;
@@ -126,7 +123,6 @@
     padding:0 2px;
   }
 
-  /* SECTION shared */
   section{padding:64px 0;}
   section + section{border-top:1px solid var(--line);}
   .sec-head{
@@ -141,7 +137,6 @@
   }
   .sec-rule{flex:1; height:1px; background:var(--line);}
 
-  /* ABOUT */
   .about-grid{display:grid; grid-template-columns:2fr 1fr; gap:56px;}
   .about-text p{color:var(--slate); margin-bottom:16px; font-size:1rem;}
   .stat-list{display:flex; flex-direction:column; gap:18px;}
@@ -149,7 +144,6 @@
   .stat-item .val{font-family:'Source Serif 4', serif; font-size:1.5rem; font-weight:700;}
   .stat-item .lbl{font-size:0.78rem; color:var(--slate); text-transform:uppercase; letter-spacing:0.04em;}
 
-  /* SKILLS */
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
   .skill-card{background:var(--paper); padding:26px 24px;}
   .skill-card h3{
@@ -160,7 +154,6 @@
   .skill-card li{font-size:0.92rem; color:var(--ink);}
   .skill-card li::before{content:'— '; color:var(--amber);}
 
-  /* PROJECTS */
   .project{
     display:grid; grid-template-columns:110px 1fr;
     gap:28px;
@@ -187,13 +180,11 @@
     display:inline-flex; align-items:center; gap:6px;
   }
   .project-link:hover{text-decoration:underline;}
-  .project-link.disabled{color:var(--slate); opacity:0.6; pointer-events:none;}
   .featured-badge{
     font-family:'JetBrains Mono', monospace; font-size:0.65rem; color:var(--amber);
     border:1px solid var(--amber); padding:2px 7px; border-radius:2px; margin-left:10px;
   }
 
-  /* EDUCATION */
   .edu-item{display:grid; grid-template-columns:180px 1fr; gap:24px; padding:20px 0; border-bottom:1px solid var(--line);}
   .edu-item:last-child{border-bottom:none;}
   .edu-item .period{font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--teal);}
@@ -201,7 +192,6 @@
   .edu-item .school{color:var(--slate); font-size:0.92rem;}
   .edu-item .grade{font-size:0.85rem; color:var(--amber); margin-top:4px;}
 
-  /* ACHIEVEMENTS / INTERESTS */
   .two-col{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
   .list-clean{list-style:none;}
   .list-clean li{
@@ -211,7 +201,6 @@
   .list-clean li:last-child{border-bottom:none;}
   .list-clean li strong{color:var(--ink);}
 
-  /* CONTACT */
   footer{
     background:var(--ink); color:var(--paper);
     padding:72px 0 40px;
