@@ -14,7 +14,6 @@ This site showcases academic and research work in statistics — including survi
 .
 ├── index.html   # Main site (single-file HTML/CSS)
 ├── photo.jpg    # Profile photo
-├── CV.pdf       # Downloadable CV
 └── README.md
 ```
 
