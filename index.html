@@ -304,6 +304,29 @@
     html{scroll-behavior:auto;}
   }
 
+  /* SCROLL REVEAL */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+  .reveal-stagger.in-view .reveal-child{opacity:1; transform:translateY(0);}
+  .reveal-child{
+    opacity:0; transform:translateY(20px);
+    transition:opacity .6s cubic-bezier(.16,.8,.3,1), transform .6s cubic-bezier(.16,.8,.3,1);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal-child{opacity:1 !important; transform:none !important; transition:none !important;}
+  }
+
+  /* PROJECT VIZ */
+  .project-viz{
+    margin-top:16px; border:1px solid var(--line); background:var(--paper-dim);
+    border-radius:2px; padding:14px 16px 10px; max-width:340px;
+  }
+  .project-viz canvas{width:100%; height:110px; display:block;}
+  .project-viz-cap{font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--slate); margin-top:8px; letter-spacing:0.01em;}
+
   a:focus-visible, .btn:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
 </style>
 </head>
@@ -348,7 +371,7 @@
 <section id="about">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">01</span><h2>About</h2><div class="sec-rule"></div></div>
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div class="about-text">
         <p>Motivated Statistics Master's student at Presidency University, Kolkata, with a strong foundation in statistical theory, econometrics, sampling techniques, experimental design, and machine learning. Experienced in data analysis using R and Python, including exploratory data analysis, regression modeling, generalized linear models, predictive analytics, and statistical inference.</p>
         <p>Passionate about applying quantitative methods and artificial intelligence to solve real-world problems in scientific research and data-driven decision-making — with a keen interest in research-oriented projects involving large and complex datasets.</p>
@@ -375,7 +398,7 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">02</span><h2>Growth</h2><div class="sec-rule"></div></div>
 
-    <div class="figure">
+    <div class="figure reveal">
       <div class="figure-frame">
         <div class="mc-trio">
           <div class="mc-panel">
@@ -630,7 +653,7 @@
 </script>
 
 <div class="wrap">
-  <div class="figure" style="margin-top:36px;">
+  <div class="figure reveal" style="margin-top:36px;">
     <div class="figure-frame">
       <div class="mc-trio mc-duo">
         <div class="mc-panel">
@@ -789,8 +812,8 @@
 <section id="skills">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">03</span><h2>Skills</h2><div class="sec-rule"></div></div>
-    <div class="skills-grid">
-      <div class="skill-card">
+    <div class="skills-grid reveal-stagger">
+      <div class="skill-card reveal-child">
         <h3>Languages / Software</h3>
         <ul>
           <li>R (RStudio)</li>
@@ -801,7 +824,7 @@
           <li>LaTeX / LyX</li>
         </ul>
       </div>
-      <div class="skill-card">
+      <div class="skill-card reveal-child">
         <h3>Statistical Domains</h3>
         <ul>
           <li>Regression &amp; Econometric Modeling</li>
@@ -812,7 +835,7 @@
           <li>Time Series Analysis</li>
         </ul>
       </div>
-      <div class="skill-card">
+      <div class="skill-card reveal-child">
         <h3>Theory</h3>
         <ul>
           <li>Probability Theory</li>
@@ -830,7 +853,7 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">04</span><h2>Projects</h2><div class="sec-rule"></div></div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">03/2026<br>–<br>04/2026</div>
       <div>
         <h3>Contaminated Phase II RCT: Antihypertensive Efficacy <span class="featured-badge">Inferencia 2026</span></h3>
@@ -838,11 +861,12 @@
         <div class="tagset">
           <span class="tag">R</span><span class="tag">MAR imputation</span><span class="tag">Bonferroni correction</span><span class="tag">Sensitivity analysis</span>
         </div>
+        <div class="project-viz"><canvas id="viz-rct" width="260" height="110"></canvas><div class="project-viz-cap">SBP reduction: Trx vs. placebo, 95% CI</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">06/2026<br>–<br>07/2026</div>
       <div>
         <h3>Survival Analysis of the MGUS2 Cohort</h3>
@@ -850,11 +874,12 @@
         <div class="tagset">
           <span class="tag">R</span><span class="tag">Cox PH</span><span class="tag">Competing risks</span><span class="tag">MICE</span><span class="tag">AFT models</span>
         </div>
+        <div class="project-viz"><canvas id="viz-km" width="260" height="110"></canvas><div class="project-viz-cap">Kaplan-Meier survival curve, MGUS2 cohort</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">2026</div>
       <div>
         <h3>ExoSage AI <span class="featured-badge">ISRO BAH 2026</span></h3>
@@ -862,11 +887,12 @@
         <div class="tagset">
           <span class="tag">TLS / BLS</span><span class="tag">CNN</span><span class="tag">Transit modelling</span><span class="tag">XAI</span>
         </div>
+        <div class="project-viz"><canvas id="viz-transit" width="260" height="110"></canvas><div class="project-viz-cap">Simulated transit light curve</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">04/2024<br>–<br>05/2024</div>
       <div>
         <h3>Impact of Social Networking Sites on Students Around Kolkata</h3>
@@ -874,11 +900,12 @@
         <div class="tagset">
           <span class="tag">Survey design</span><span class="tag">Chi-square tests</span><span class="tag">Regression</span>
         </div>
+        <div class="project-viz"><canvas id="viz-social" width="260" height="110"></canvas><div class="project-viz-cap">Usage duration vs. academic satisfaction</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">03/2024<br>–<br>04/2024</div>
       <div>
         <h3>Statistical Analysis of Educational Development in West Bengal</h3>
@@ -886,11 +913,12 @@
         <div class="tagset">
           <span class="tag">Descriptive statistics</span><span class="tag">Census data</span>
         </div>
+        <div class="project-viz"><canvas id="viz-edu" width="260" height="110"></canvas><div class="project-viz-cap">Literacy rate by district, rural vs. urban</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="pdate mono">08/2023<br>–<br>11/2023</div>
       <div>
         <h3>Trend Analysis of Unemployment in India Since Independence</h3>
@@ -898,6 +926,7 @@
         <div class="tagset">
           <span class="tag">Time series</span><span class="tag">Policy analysis</span>
         </div>
+        <div class="project-viz"><canvas id="viz-unemp" width="260" height="110"></canvas><div class="project-viz-cap">Unemployment rate, decades since independence</div></div>
         <a href="https://github.com/deycreates768728" target="_blank" rel="noopener" class="project-link">View repository →</a>
       </div>
     </div>
@@ -908,7 +937,7 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">05</span><h2>Education</h2><div class="sec-rule"></div></div>
 
-    <div class="edu-item">
+    <div class="edu-item reveal">
       <div class="period mono">2025 — Current</div>
       <div>
         <h4>MS in Statistics</h4>
@@ -916,7 +945,7 @@
         <div class="grade">Current grade: 9.0 / 10</div>
       </div>
     </div>
-    <div class="edu-item">
+    <div class="edu-item reveal">
       <div class="period mono">2022 — 2025</div>
       <div>
         <h4>BS in Statistics with Honors</h4>
@@ -924,7 +953,7 @@
         <div class="grade">Final grade: A (7.736 / 10)</div>
       </div>
     </div>
-    <div class="edu-item">
+    <div class="edu-item reveal">
       <div class="period mono">2021 — 2022</div>
       <div>
         <h4>Class XII, Science</h4>
@@ -932,7 +961,7 @@
         <div class="grade">Final grade: O (487/500)</div>
       </div>
     </div>
-    <div class="edu-item">
+    <div class="edu-item reveal">
       <div class="period mono">2019 — 2020</div>
       <div>
         <h4>Class X</h4>
@@ -946,7 +975,7 @@
 <section id="more">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num mono">06</span><h2>Achievements &amp; Involvement</h2><div class="sec-rule"></div></div>
-    <div class="two-col">
+    <div class="two-col reveal">
       <div>
         <h3 class="mono" style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate); margin-bottom:14px;">Achievements</h3>
         <ul class="list-clean">
@@ -972,7 +1001,7 @@
   <div class="wrap">
     <h2>Let's talk data.</h2>
     <p class="sub">Open to research collaborations, internships, and conversations about statistics, survival analysis, or applied ML.</p>
-    <div class="contact-grid">
+    <div class="contact-grid reveal">
       <div class="contact-card">
         <div class="lbl">Email</div>
         <a href="mailto:dey10752@gmail.com">dey10752@gmail.com</a><br>
@@ -1079,6 +1108,253 @@
     if(!reduceMotion) requestAnimationFrame(step);
   }
   step(0);
+})();
+</script>
+
+<script>
+(function(){
+  const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+  if(!('IntersectionObserver' in window) || targets.length === 0){
+    targets.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15, rootMargin:'0px 0px -60px 0px' });
+  targets.forEach(el => io.observe(el));
+
+  // stagger children timing
+  document.querySelectorAll('.reveal-stagger').forEach(group => {
+    const children = group.querySelectorAll('.reveal-child');
+    children.forEach((c,i) => { c.style.transitionDelay = (i*0.09) + 's'; });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TEAL = '#4FBFA8', AMBER = '#E0A458', SLATE = '#9BA3AF', LINE = '#2A313C';
+
+  function setup(id){
+    const cv = document.getElementById(id);
+    if(!cv) return null;
+    const ctx = cv.getContext('2d');
+    return { cv, ctx, W:cv.width, H:cv.height };
+  }
+  function axes(ctx, x0,x1,y0,y1){
+    ctx.strokeStyle = LINE; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x0,y1); ctx.lineTo(x1,y1); ctx.stroke();
+  }
+
+  function runOnce(fn){
+    let done = false;
+    return (progress) => { if(!done){ fn(progress); if(progress>=1) done = true; } };
+  }
+
+  function animate(drawFn, duration){
+    if(reduceMotion){ drawFn(1); return; }
+    const start = performance.now();
+    function frame(now){
+      const p = Math.min(1, (now-start)/duration);
+      const eased = 1 - Math.pow(1-p, 3);
+      drawFn(eased);
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // -- RCT: bar comparison with CI whiskers --
+  const rct = setup('viz-rct');
+  function drawRCT(p){
+    const {ctx,W,H} = rct;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:30,r:16,t:14,b:20}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const bars = [{label:'Placebo', val:0.18, ci:0.05, color:SLATE}, {label:'Trx', val:0.62, ci:0.06, color:TEAL}];
+    const bw = 50;
+    bars.forEach((b,i)=>{
+      const cx = x0 + 55 + i*100;
+      const barH = b.val * p * (y1-y0);
+      ctx.fillStyle = b.color === TEAL ? 'rgba(79,191,168,0.75)' : 'rgba(155,163,175,0.55)';
+      ctx.fillRect(cx-bw/2, y1-barH, bw, barH);
+      if(p>0.6){
+        const ciH = b.ci*(y1-y0);
+        ctx.strokeStyle = AMBER; ctx.lineWidth = 1.3;
+        ctx.beginPath(); ctx.moveTo(cx, y1-barH-ciH); ctx.lineTo(cx, y1-barH+ciH); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx-6,y1-barH-ciH); ctx.lineTo(cx+6,y1-barH-ciH); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx-6,y1-barH+ciH); ctx.lineTo(cx+6,y1-barH+ciH); ctx.stroke();
+      }
+      ctx.fillStyle = SLATE; ctx.font = '9px "JetBrains Mono", monospace'; ctx.textAlign='center';
+      ctx.fillText(b.label, cx, y1+14);
+    });
+    if(p>=1){
+      ctx.fillStyle = TEAL; ctx.font='9px "JetBrains Mono", monospace'; ctx.textAlign='left';
+      ctx.fillText('p < 0.001', x0, 12);
+    }
+  }
+
+  // -- Kaplan-Meier step curve --
+  const km = setup('viz-km');
+  const kmEvents = [{t:0.1,drop:0.03},{t:0.22,drop:0.05},{t:0.35,drop:0.06},{t:0.48,drop:0.08},
+    {t:0.58,drop:0.05},{t:0.68,drop:0.09},{t:0.78,drop:0.07},{t:0.88,drop:0.06},{t:0.96,drop:0.04}];
+  function drawKM(p){
+    const {ctx,W,H} = km;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:24,r:12,t:14,b:20}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const tNow = p;
+    let s = 1, curX = x0, curY = y1;
+    ctx.beginPath(); ctx.strokeStyle = TEAL; ctx.lineWidth = 2;
+    ctx.shadowColor='rgba(79,191,168,0.7)'; ctx.shadowBlur=5;
+    ctx.moveTo(curX,curY);
+    kmEvents.forEach(ev=>{
+      if(ev.t <= tNow){
+        const stepX = x0 + ev.t*(x1-x0);
+        ctx.lineTo(stepX, curY);
+        s -= ev.drop;
+        curY = y1 - s*(y1-y0);
+        ctx.lineTo(stepX, curY);
+      }
+    });
+    ctx.lineTo(x0 + tNow*(x1-x0), curY);
+    ctx.stroke(); ctx.shadowBlur=0;
+    ctx.fillStyle = SLATE; ctx.font='8px "JetBrains Mono", monospace'; ctx.textAlign='left';
+    ctx.fillText('S(t)', x0, 12);
+    ctx.textAlign='center'; ctx.fillText('follow-up time →', (x0+x1)/2, H-4);
+  }
+
+  // -- Transit light curve --
+  const transit = setup('viz-transit');
+  function drawTransit(p){
+    const {ctx,W,H} = transit;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:14,r:14,t:16,b:16}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const steps = Math.floor(180*p);
+    ctx.beginPath(); ctx.strokeStyle = TEAL; ctx.lineWidth = 1.6;
+    ctx.shadowColor='rgba(79,191,168,0.6)'; ctx.shadowBlur=4;
+    for(let i=0;i<=steps;i++){
+      const xv = i/180;
+      const dip = Math.exp(-Math.pow((xv-0.5)/0.035,2))*0.55;
+      const noise = (Math.sin(i*12.9)*0.01);
+      const yv = 1 - dip + noise;
+      const px = x0 + xv*(x1-x0), py = y0 + (1-yv)*(y1-y0);
+      if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+    }
+    ctx.stroke(); ctx.shadowBlur=0;
+    ctx.fillStyle = SLATE; ctx.font='8px "JetBrains Mono", monospace'; ctx.textAlign='left';
+    ctx.fillText('flux', x0, 12);
+    ctx.textAlign='center'; ctx.fillText('orbital phase →', (x0+x1)/2, H-4);
+  }
+
+  // -- Social: scatter + regression --
+  const social = setup('viz-social');
+  const socialPts = [{x:0.1,y:0.75},{x:0.2,y:0.62},{x:0.28,y:0.7},{x:0.38,y:0.5},{x:0.46,y:0.58},
+    {x:0.55,y:0.4},{x:0.62,y:0.46},{x:0.7,y:0.3},{x:0.8,y:0.36},{x:0.9,y:0.22}];
+  function drawSocial(p){
+    const {ctx,W,H} = social;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:20,r:12,t:14,b:20}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const n = Math.ceil(socialPts.length*p);
+    for(let i=0;i<n;i++){
+      const pt = socialPts[i];
+      const px = x0+pt.x*(x1-x0), py = y0+(1-pt.y)*(y1-y0);
+      ctx.beginPath(); ctx.fillStyle = AMBER;
+      ctx.arc(px,py,2.6,0,Math.PI*2); ctx.fill();
+    }
+    if(p>0.7){
+      const lp = Math.min(1,(p-0.7)/0.3);
+      ctx.beginPath(); ctx.strokeStyle = TEAL; ctx.lineWidth = 2;
+      ctx.shadowColor='rgba(79,191,168,0.7)'; ctx.shadowBlur=5;
+      const yA = 0.8, yB = 0.8 - 0.62*lp;
+      ctx.moveTo(x0, y0+(1-yA)*(y1-y0));
+      ctx.lineTo(x0+lp*(x1-x0), y0+(1-yB)*(y1-y0));
+      ctx.stroke(); ctx.shadowBlur=0;
+    }
+    ctx.fillStyle = SLATE; ctx.font='8px "JetBrains Mono", monospace'; ctx.textAlign='center';
+    ctx.fillText('time on social media →', (x0+x1)/2, H-4);
+  }
+
+  // -- Education: grouped bars, rural vs urban --
+  const edu = setup('viz-edu');
+  const eduBars = [{r:0.58,u:0.78},{r:0.64,u:0.82},{r:0.70,u:0.86},{r:0.75,u:0.90}];
+  function drawEdu(p){
+    const {ctx,W,H} = edu;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:24,r:12,t:14,b:20}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const groupW = (x1-x0)/eduBars.length;
+    eduBars.forEach((b,i)=>{
+      const gx = x0 + i*groupW + groupW*0.2;
+      const bw = groupW*0.28;
+      const rH = b.r*p*(y1-y0), uH = b.u*p*(y1-y0);
+      ctx.fillStyle = 'rgba(155,163,175,0.55)';
+      ctx.fillRect(gx, y1-rH, bw, rH);
+      ctx.fillStyle = 'rgba(79,191,168,0.75)';
+      ctx.fillRect(gx+bw+4, y1-uH, bw, uH);
+    });
+    ctx.fillStyle = SLATE; ctx.font='8px "JetBrains Mono", monospace'; ctx.textAlign='left';
+    ctx.fillText('literacy %', x0, 12);
+    if(p>=1){
+      ctx.fillStyle = SLATE; ctx.fillText('■ rural', x0, H-4);
+      ctx.fillStyle = TEAL; ctx.fillText('■ urban', x0+52, H-4);
+    }
+  }
+
+  // -- Unemployment: time series line, decades --
+  const unemp = setup('viz-unemp');
+  const unempPts = [0.30,0.36,0.42,0.38,0.5,0.46,0.62,0.55];
+  function drawUnemp(p){
+    const {ctx,W,H} = unemp;
+    ctx.clearRect(0,0,W,H);
+    const pad = {l:20,r:12,t:14,b:20}, x0=pad.l, x1=W-pad.r, y0=pad.t, y1=H-pad.b;
+    axes(ctx,x0,x1,y0,y1);
+    const n = unempPts.length;
+    const steps = p*(n-1);
+    ctx.beginPath(); ctx.strokeStyle = AMBER; ctx.lineWidth = 2;
+    ctx.shadowColor='rgba(224,164,88,0.7)'; ctx.shadowBlur=4;
+    for(let i=0;i<n;i++){
+      if(i > steps) break;
+      const frac = i===Math.floor(steps) && i<n-1 ? 1 : 1;
+      const px = x0 + (i/(n-1))*(x1-x0);
+      const py = y1 - unempPts[i]*(y1-y0);
+      if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+    }
+    ctx.stroke(); ctx.shadowBlur=0;
+    ctx.fillStyle = SLATE; ctx.font='8px "JetBrains Mono", monospace'; ctx.textAlign='left';
+    ctx.fillText('unemployment rate', x0, 12);
+    ctx.textAlign='center'; ctx.fillText('decades since 1947 →', (x0+x1)/2, H-4);
+  }
+
+  const registry = [
+    [rct, drawRCT, 1100], [km, drawKM, 1300], [transit, drawTransit, 1400],
+    [social, drawSocial, 1200], [edu, drawEdu, 1100], [unemp, drawUnemp, 1300]
+  ];
+
+  registry.forEach(([obj, fn, dur])=>{
+    if(!obj) return;
+    obj.cv.__played = false;
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !entry.target.__played){
+        entry.target.__played = true;
+        const match = registry.find(r => r[0] && r[0].cv === entry.target);
+        if(match) animate(match[1], match[2]);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.3 });
+
+  registry.forEach(([obj])=>{ if(obj) io.observe(obj.cv); });
 })();
 </script>
 
